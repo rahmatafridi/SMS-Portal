@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SMSPortalModelStoreContainer" CdmEntityContainer="SMSPortalEntity">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="SMSPortalModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Masking" ColumnName="Masking" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="SMSPortalModel.Client">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="SMSPortalModel.Store.InsertClient">
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+            <ScalarProperty Name="Masking" ParameterName="Masking" />
+            <ScalarProperty Name="Name" ParameterName="Name" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="SMSPortalModel.Store.UpdateClient">
+            <ScalarProperty Name="UID" ParameterName="UID" Version="Current" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+            <ScalarProperty Name="Masking" ParameterName="Masking" Version="Current" />
+            <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertClient" FunctionName="SMSPortalModel.Store.InsertClient" />
+    <FunctionImportMapping FunctionImportName="UpdateClient" FunctionName="SMSPortalModel.Store.UpdateClient" />
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="SMSPortalModel.Package">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="SMSnum" ColumnName="SMSnum" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="SMSPortalModel.Package">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="SMSPortalModel.Store.InsertPackage">
+            <ScalarProperty Name="PackageName" ParameterName="PackageName" />
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+            <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+            <ScalarProperty Name="Rate" ParameterName="Rate" />
+            <ScalarProperty Name="Duration" ParameterName="Duration" />
+            <ScalarProperty Name="SMSnum" ParameterName="SMSnum" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="SMSPortalModel.Store.UpdatePackage">
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+            <ScalarProperty Name="UID" ParameterName="UID" Version="Current" />
+            <ScalarProperty Name="Rate" ParameterName="Rate" Version="Current" />
+            <ScalarProperty Name="Duration" ParameterName="Duration" Version="Current" />
+            <ScalarProperty Name="SMSnum" ParameterName="SMSnum" Version="Current" />
+            <ScalarProperty Name="PackageName" ParameterName="PackageName" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertPackage" FunctionName="SMSPortalModel.Store.InsertPackage" />
+    <FunctionImportMapping FunctionImportName="UpdatePackage" FunctionName="SMSPortalModel.Store.UpdatePackage" />
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SMSPortalModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="SMSPortalModel.User">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="SMSPortalModel.Store.InsertUser">
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+            <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+            <ScalarProperty Name="ClientId" ParameterName="ClientId" />
+            <ScalarProperty Name="UserTypeId" ParameterName="UserTypeId" />
+            <ScalarProperty Name="Password" ParameterName="Password" />
+            <ScalarProperty Name="UserId" ParameterName="UserId" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="SMSPortalModel.Store.UpdateUser">
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+            <ScalarProperty Name="UID" ParameterName="UID" Version="Current" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+            <ScalarProperty Name="ClientId" ParameterName="ClientId" Version="Current" />
+            <ScalarProperty Name="UserTypeId" ParameterName="UserTypeId" Version="Current" />
+            <ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+            <ScalarProperty Name="UserId" ParameterName="UserId" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="SMSPortalModel.Store.InsertUser" />
+    <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="SMSPortalModel.Store.UpdateUser" />
+    <EntitySetMapping Name="UserTypeLookups">
+      <EntityTypeMapping TypeName="SMSPortalModel.UserTypeLookup">
+        <MappingFragment StoreEntitySet="UserTypeLookup">
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignPackages">
+      <EntityTypeMapping TypeName="SMSPortalModel.AssignPackage">
+        <MappingFragment StoreEntitySet="AssignPackages">
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="SMSPortalModel.AssignPackage">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="SMSPortalModel.Store.InsertAssignPackages">
+            <ScalarProperty Name="StartDate" ParameterName="StartedDate" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+            <ScalarProperty Name="EndDate" ParameterName="EndDate" />
+            <ScalarProperty Name="PackageId" ParameterName="PackageId" />
+            <ScalarProperty Name="ClientId" ParameterName="ClientId" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="SMSPortalModel.Store.UpdateAssignPackage">
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+            <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+            <ScalarProperty Name="ClientId" ParameterName="ClientId" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertAssignPackages" FunctionName="SMSPortalModel.Store.InsertAssignPackages" />
+    <EntitySetMapping Name="PageAllocations">
+      <EntityTypeMapping TypeName="SMSPortalModel.PageAllocation">
+        <MappingFragment StoreEntitySet="PageAllocation">
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetRightsByFormUserType" FunctionName="SMSPortalModel.Store.GetRightsByFormUserType" />
+    <FunctionImportMapping FunctionImportName="InsertClientPackageDetail1" FunctionName="SMSPortalModel.Store.InsertClientPackageDetail" />
+    <FunctionImportMapping FunctionImportName="SP_RemainingSMS" FunctionName="SMSPortalModel.Store.SP_RemainingSMS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SMSPortalModel.SP_RemainingSMS_Result">
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+          <ScalarProperty Name="DebitSMSQty" ColumnName="DebitSMSQty" />
+          <ScalarProperty Name="CreditSMSQty" ColumnName="CreditSMSQty" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateClientPackageDetail1" FunctionName="SMSPortalModel.Store.UpdateClientPackageDetail" />
+    <EntitySetMapping Name="ClientPackageDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(SMSPortalModel.ClientPackageDetail)">
+        <MappingFragment StoreEntitySet="ClientPackageDetail">
+          <ScalarProperty Name="TotalFailedSMS" ColumnName="TotalFailedSMS" />
+          <ScalarProperty Name="TotalSentSMS" ColumnName="TotalSentSMS" />
+          <ScalarProperty Name="TotalScheduledSMS" ColumnName="TotalScheduledSMS" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="CreditSMSQty" ColumnName="CreditSMSQty" />
+          <ScalarProperty Name="DebitSMSQty" ColumnName="DebitSMSQty" />
+          <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSCampains">
+      <EntityTypeMapping TypeName="SMSPortalModel.SMSCampain">
+        <MappingFragment StoreEntitySet="SMSCampain">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="SMSCountBefore" ColumnName="SMSCountBefore" />
+          <ScalarProperty Name="Failure" ColumnName="Failure" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+          <ScalarProperty Name="CharacterCount" ColumnName="CharacterCount" />
+          <ScalarProperty Name="SMSText" ColumnName="SMSText" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="SMSPortalModel.SMSCampain">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="SMSPortalModel.Store.InsertSMSCampaignData">
+            <ScalarProperty Name="Failure" ParameterName="FailureCount" />
+            <ScalarProperty Name="Success" ParameterName="SuccessCount" />
+            <ScalarProperty Name="CharacterCount" ParameterName="CharCount" />
+            <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+            <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+            <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+            <ScalarProperty Name="SMSCountBefore" ParameterName="SMSCountBefore" />
+            <ScalarProperty Name="SMSText" ParameterName="SMSText" />
+            <ScalarProperty Name="ClientId" ParameterName="ClientId" />
+          </InsertFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertClientPackageDetail" FunctionName="SMSPortalModel.Store.InsertClientPackageDetail" />
+    <FunctionImportMapping FunctionImportName="UpdateClientPackageDetail" FunctionName="SMSPortalModel.Store.UpdateClientPackageDetail" />
+    <FunctionImportMapping FunctionImportName="UpdateAssignPackage1" FunctionName="SMSPortalModel.Store.UpdateAssignPackage" />
+    <FunctionImportMapping FunctionImportName="GetClientSummaryStatus" FunctionName="SMSPortalModel.Store.GetClientSummaryStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SMSPortalModel.GetClientSummaryStatus_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Masking" ColumnName="Masking" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="pcent" ColumnName="pcent" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertSMSCampaignData" FunctionName="SMSPortalModel.Store.InsertSMSCampaignData" />
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="SMSPortalModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

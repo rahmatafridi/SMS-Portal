@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SMSPortalModel1StoreContainer" CdmEntityContainer="SMSPortalEDM">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="SMSPortalModel1.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="Masking" ColumnName="Masking" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

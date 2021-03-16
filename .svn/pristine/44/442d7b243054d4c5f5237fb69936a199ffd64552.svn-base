@@ -1,0 +1,1020 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SMSPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignPackages">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Invoice" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="ClientPackageDetail">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="PackageId" Type="int" />
+          <Property Name="DebitSMSQty" Type="int" />
+          <Property Name="CreditSMSQty" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="TotalScheduledSMS" Type="int" />
+          <Property Name="TotalSentSMS" Type="int" />
+          <Property Name="TotalFailedSMS" Type="int" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="UID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" />
+          <Property Name="Masking" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UID" Type="uniqueidentifier" />
+          <Property Name="CreatedIp" Type="varchar" MaxLength="50" />
+          <Property Name="UpatedIp" Type="varchar" MaxLength="50" />
+          <Property Name="ClientID" Type="int" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="StackTrace" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="UpdateOn" Type="datetime" />
+          <Property Name="CreatedIp" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedIp" Type="varchar" MaxLength="50" />
+          <Property Name="UID" Type="uniqueidentifier" />
+          <Property Name="StatusId" Type="bit" />
+          <Property Name="ClientId" Type="int" />
+        </EntityType>
+        <EntityType Name="Packages">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="UID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SMSnum" Type="int" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="PageAllocation">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageName" Type="varchar" MaxLength="100" />
+          <Property Name="UserTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="SMSCampain">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="SMSText" Type="varchar(max)" />
+          <Property Name="CharacterCount" Type="int" />
+          <Property Name="Success" Type="int" />
+          <Property Name="Failure" Type="int" />
+          <Property Name="SMSCountBefore" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SMSSchedule">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="TextSms" Type="varchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="UID" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTypeLookup">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="GetClientSummaryStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetContactList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRightsByFormUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertAssignPackages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="PackageId" Type="int" Mode="In" />
+          <Parameter Name="StartedDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="CreatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Masking" Type="varchar" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="CreatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertClientPackageDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="PackageId" Type="int" Mode="In" />
+          <Parameter Name="DebitSMSQty" Type="int" Mode="In" />
+          <Parameter Name="CreditSMSQty" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="CreatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="TotalScheduledSMS" Type="int" Mode="In" />
+          <Parameter Name="TotalSentSMS" Type="int" Mode="In" />
+          <Parameter Name="TotalFailureSMS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertPackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PackageName" Type="varchar" Mode="In" />
+          <Parameter Name="SMSnum" Type="int" Mode="In" />
+          <Parameter Name="Duration" Type="int" Mode="In" />
+          <Parameter Name="Rate" Type="float" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="InsertSMSCampaignData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="SMSText" Type="varchar(max)" Mode="In" />
+          <Parameter Name="CharCount" Type="int" Mode="In" />
+          <Parameter Name="SuccessCount" Type="int" Mode="In" />
+          <Parameter Name="FailureCount" Type="int" Mode="In" />
+          <Parameter Name="SMSCountBefore" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_RemainingSMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="PackageId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateAssignPackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Masking" Type="varchar" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="UpdateClientPackageDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="PackageId" Type="int" Mode="In" />
+          <Parameter Name="DebitSMSQty" Type="int" Mode="In" />
+          <Parameter Name="CreditSMSQty" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdatePackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PackageName" Type="varchar" Mode="In" />
+          <Parameter Name="SMSnum" Type="int" Mode="In" />
+          <Parameter Name="Duration" Type="int" Mode="In" />
+          <Parameter Name="Rate" Type="float" Mode="In" />
+          <Parameter Name="UID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="UserTypeId" Type="int" Mode="In" />
+          <Parameter Name="ClientId" Type="int" Mode="In" />
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+          <Parameter Name="UID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedOn" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="SMSPortalModelStoreContainer">
+          <EntitySet Name="AssignPackages" EntityType="Self.AssignPackages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientPackageDetail" EntityType="Self.ClientPackageDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageAllocation" EntityType="Self.PageAllocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMSCampain" EntityType="Self.SMSCampain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMSSchedule" EntityType="Self.SMSSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypeLookup" EntityType="Self.UserTypeLookup" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMSPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Masking" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="UID" Type="Guid" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="SMSPortalEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <FunctionImport Name="InsertClient">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Masking" Mode="In" Type="String" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateClient">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Masking" Mode="In" Type="String" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="Packages" EntityType="SMSPortalModel.Package" />
+          <FunctionImport Name="InsertPackage">
+            <Parameter Name="PackageName" Mode="In" Type="String" />
+            <Parameter Name="SMSnum" Mode="In" Type="Int32" />
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="Rate" Mode="In" Type="Double" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePackage">
+            <Parameter Name="PackageName" Mode="In" Type="String" />
+            <Parameter Name="SMSnum" Mode="In" Type="Int32" />
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="Rate" Mode="In" Type="Double" />
+            <Parameter Name="UID" Mode="In" Type="Guid" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Users" EntityType="SMSPortalModel.User" />
+          <FunctionImport Name="InsertUser">
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUser">
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UID" Mode="In" Type="Guid" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="UserTypeLookups" EntityType="SMSPortalModel.UserTypeLookup" />
+          <FunctionImport Name="UpdateAssignPackage">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ClientPackageDetails" EntityType="SMSPortalModel.ClientPackageDetail" />
+          <FunctionImport Name="InsertClientPackageDetail">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="PackageId" Mode="In" Type="Int32" />
+            <Parameter Name="DebitSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="CreditSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="TotalScheduledSMS" Mode="In" Type="Int32" />
+            <Parameter Name="TotalSentSMS" Mode="In" Type="Int32" />
+            <Parameter Name="TotalFailureSMS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateClientPackageDetail">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="PackageId" Mode="In" Type="Int32" />
+            <Parameter Name="DebitSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="CreditSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+
+          <EntitySet Name="PageAllocations" EntityType="SMSPortalModel.PageAllocation" />
+          <FunctionImport Name="GetRightsByFormUserType" EntitySet="PageAllocations" ReturnType="Collection(SMSPortalModel.PageAllocation)">
+          <Parameter Name="UserTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertClientPackageDetail1">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="PackageId" Mode="In" Type="Int32" />
+            <Parameter Name="DebitSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="CreditSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="TotalScheduledSMS" Mode="In" Type="Int32" />
+            <Parameter Name="TotalSentSMS" Mode="In" Type="Int32" />
+            <Parameter Name="TotalFailureSMS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RemainingSMS" ReturnType="Collection(SMSPortalModel.SP_RemainingSMS_Result)">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="PackageId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateClientPackageDetail1">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="PackageId" Mode="In" Type="Int32" />
+            <Parameter Name="DebitSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="CreditSMSQty" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAssignPackage1">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetClientSummaryStatus" ReturnType="Collection(SMSPortalModel.GetClientSummaryStatus_Result)" />
+          <FunctionImport Name="InsertSMSCampaignData">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="SMSText" Mode="In" Type="String" />
+            <Parameter Name="CharCount" Mode="In" Type="Int32" />
+            <Parameter Name="SuccessCount" Mode="In" Type="Int32" />
+            <Parameter Name="FailureCount" Mode="In" Type="Int32" />
+            <Parameter Name="SMSCountBefore" Mode="In" Type="Int32" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ErrorLogs" EntityType="SMSPortalModel.ErrorLog" />
+          <EntitySet Name="Contacts" EntityType="SMSPortalModel.Contact" />
+          <EntitySet Name="Groups" EntityType="SMSPortalModel.Group" />
+          <EntitySet Name="AssignPackages" EntityType="SMSPortalModel.AssignPackage" />
+          <FunctionImport Name="InsertAssignPackages">
+            <Parameter Name="ClientId" Mode="In" Type="Int32" />
+            <Parameter Name="PackageId" Mode="In" Type="Int32" />
+            <Parameter Name="StartedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="StatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetContactList" ReturnType="Collection(SMSPortalModel.GetContactList_Result)">
+          <Parameter Name="ClientId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="SMSCampains" EntityType="SMSPortalModel.SMSCampain" />
+          <EntitySet Name="SMSSchedules" EntityType="SMSPortalModel.SMSSchedule" />
+
+
+        </EntityContainer>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Guid" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMSnum" Type="Int32" Nullable="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="StatusId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="UID" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserTypeLookup">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ClientPackageDetail">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="PackageId" Type="Int32" />
+          <Property Name="DebitSMSQty" Type="Int32" />
+          <Property Name="CreditSMSQty" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="TotalScheduledSMS" Type="Int32" />
+          <Property Name="TotalSentSMS" Type="Int32" />
+          <Property Name="TotalFailedSMS" Type="Int32" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PageAllocation">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="GetRightsByFormUserType_Result">
+          <Property Type="Int32" Name="Idpk" Nullable="false" />
+          <Property Type="String" Name="PageName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="UserTypeId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_RemainingSMS_Result">
+          <Property Type="Int32" Name="Idpk" Nullable="false" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="PackageId" Nullable="true" />
+          <Property Type="Int32" Name="DebitSMSQty" Nullable="true" />
+          <Property Type="Int32" Name="CreditSMSQty" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetClientSummaryStatus_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Masking" Nullable="false" MaxLength="11" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="Int32" Name="pcent" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UID" Type="Guid" />
+          <Property Name="CreatedIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpatedIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClientID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Guid" />
+          <Property Name="StatusId" Type="Boolean" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="CreatedIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AssignPackage">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Invoice" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="GetContactList_Result">
+          <Property Type="Int32" Name="ContactId" Nullable="false" />
+          <Property Type="Guid" Name="UID" Nullable="true" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="SMSCampain">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="SMSText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CharacterCount" Type="Int32" />
+          <Property Name="Success" Type="Int32" />
+          <Property Name="Failure" Type="Int32" />
+          <Property Name="SMSCountBefore" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SMSSchedule">
+          <Key>
+            <PropertyRef Name="Idpk" />
+          </Key>
+          <Property Name="Idpk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="TextSms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="UID" Type="Guid" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SMSPortalModelStoreContainer" CdmEntityContainer="SMSPortalEntity">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="SMSPortalModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Masking" ColumnName="Masking" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SMSPortalModel.Client">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SMSPortalModel.Store.InsertClient">
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+                  <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+                  <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+                  <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+                  <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+                  <ScalarProperty Name="Masking" ParameterName="Masking" />
+                  <ScalarProperty Name="Name" ParameterName="Name" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="SMSPortalModel.Store.UpdateClient">
+                  <ScalarProperty Name="UID" ParameterName="UID" Version="Current" />
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+                  <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+                  <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+                  <ScalarProperty Name="Masking" ParameterName="Masking" Version="Current" />
+                  <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertClient" FunctionName="SMSPortalModel.Store.InsertClient" />
+          <FunctionImportMapping FunctionImportName="UpdateClient" FunctionName="SMSPortalModel.Store.UpdateClient" />
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="SMSPortalModel.Package">
+              <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="SMSnum" ColumnName="SMSnum" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SMSPortalModel.Package">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SMSPortalModel.Store.InsertPackage">
+                  <ScalarProperty Name="PackageName" ParameterName="PackageName" />
+                  <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+                  <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+                  <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+                  <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+                  <ScalarProperty Name="Rate" ParameterName="Rate" />
+                  <ScalarProperty Name="Duration" ParameterName="Duration" />
+                  <ScalarProperty Name="SMSnum" ParameterName="SMSnum" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="SMSPortalModel.Store.UpdatePackage">
+                  <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+                  <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+                  <ScalarProperty Name="UID" ParameterName="UID" Version="Current" />
+                  <ScalarProperty Name="Rate" ParameterName="Rate" Version="Current" />
+                  <ScalarProperty Name="Duration" ParameterName="Duration" Version="Current" />
+                  <ScalarProperty Name="SMSnum" ParameterName="SMSnum" Version="Current" />
+                  <ScalarProperty Name="PackageName" ParameterName="PackageName" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertPackage" FunctionName="SMSPortalModel.Store.InsertPackage" />
+          <FunctionImportMapping FunctionImportName="UpdatePackage" FunctionName="SMSPortalModel.Store.UpdatePackage" />
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SMSPortalModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SMSPortalModel.User">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SMSPortalModel.Store.InsertUser">
+                  <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" />
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" />
+                  <ScalarProperty Name="CreatedOn" ParameterName="CreatedOn" />
+                  <ScalarProperty Name="CreatedBy" ParameterName="CreatedBy" />
+                  <ScalarProperty Name="StatusId" ParameterName="StatusId" />
+                  <ScalarProperty Name="ClientId" ParameterName="ClientId" />
+                  <ScalarProperty Name="UserTypeId" ParameterName="UserTypeId" />
+                  <ScalarProperty Name="Password" ParameterName="Password" />
+                  <ScalarProperty Name="UserId" ParameterName="UserId" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="SMSPortalModel.Store.UpdateUser">
+                  <ScalarProperty Name="UpdatedOn" ParameterName="UpdatedOn" Version="Current" />
+                  <ScalarProperty Name="UpdatedBy" ParameterName="UpdatedBy" Version="Current" />
+                  <ScalarProperty Name="UID" ParameterName="UID" Version="Current" />
+                  <ScalarProperty Name="StatusId" ParameterName="StatusId" Version="Current" />
+                  <ScalarProperty Name="ClientId" ParameterName="ClientId" Version="Current" />
+                  <ScalarProperty Name="UserTypeId" ParameterName="UserTypeId" Version="Current" />
+                  <ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+                  <ScalarProperty Name="UserId" ParameterName="UserId" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="SMSPortalModel.Store.InsertUser" />
+          <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="SMSPortalModel.Store.UpdateUser" />
+          <EntitySetMapping Name="UserTypeLookups">
+            <EntityTypeMapping TypeName="SMSPortalModel.UserTypeLookup">
+              <MappingFragment StoreEntitySet="UserTypeLookup">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageAllocations">
+            <EntityTypeMapping TypeName="SMSPortalModel.PageAllocation">
+              <MappingFragment StoreEntitySet="PageAllocation">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetRightsByFormUserType" FunctionName="SMSPortalModel.Store.GetRightsByFormUserType" >           
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertClientPackageDetail1" FunctionName="SMSPortalModel.Store.InsertClientPackageDetail" />
+          <FunctionImportMapping FunctionImportName="SP_RemainingSMS" FunctionName="SMSPortalModel.Store.SP_RemainingSMS" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SMSPortalModel.SP_RemainingSMS_Result">
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="DebitSMSQty" ColumnName="DebitSMSQty" />
+                <ScalarProperty Name="CreditSMSQty" ColumnName="CreditSMSQty" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateClientPackageDetail1" FunctionName="SMSPortalModel.Store.UpdateClientPackageDetail" />
+          <EntitySetMapping Name="ClientPackageDetails">
+            <EntityTypeMapping TypeName="IsTypeOf(SMSPortalModel.ClientPackageDetail)">
+              <MappingFragment StoreEntitySet="ClientPackageDetail">
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="TotalFailedSMS" ColumnName="TotalFailedSMS" />
+                <ScalarProperty Name="TotalSentSMS" ColumnName="TotalSentSMS" />
+                <ScalarProperty Name="TotalScheduledSMS" ColumnName="TotalScheduledSMS" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="CreditSMSQty" ColumnName="CreditSMSQty" />
+                <ScalarProperty Name="DebitSMSQty" ColumnName="DebitSMSQty" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+
+          <FunctionImportMapping FunctionImportName="InsertClientPackageDetail" FunctionName="SMSPortalModel.Store.InsertClientPackageDetail" />
+          <FunctionImportMapping FunctionImportName="UpdateClientPackageDetail" FunctionName="SMSPortalModel.Store.UpdateClientPackageDetail" />
+          <FunctionImportMapping FunctionImportName="UpdateAssignPackage1" FunctionName="SMSPortalModel.Store.UpdateAssignPackage" />
+          <FunctionImportMapping FunctionImportName="GetClientSummaryStatus" FunctionName="SMSPortalModel.Store.GetClientSummaryStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SMSPortalModel.GetClientSummaryStatus_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Masking" ColumnName="Masking" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="pcent" ColumnName="pcent" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertSMSCampaignData" FunctionName="SMSPortalModel.Store.InsertSMSCampaignData" />
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="SMSPortalModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="SMSPortalModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="UpatedIp" ColumnName="UpatedIp" />
+                <ScalarProperty Name="CreatedIp" ColumnName="CreatedIp" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SMSPortalModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="CreatedIp" ColumnName="CreatedIp" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UpdatedIp" ColumnName="UpdatedIp" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignPackages">
+            <EntityTypeMapping TypeName="SMSPortalModel.AssignPackage">
+              <MappingFragment StoreEntitySet="AssignPackages">
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertAssignPackages" FunctionName="SMSPortalModel.Store.InsertAssignPackages" />
+          <FunctionImportMapping FunctionImportName="GetContactList" FunctionName="SMSPortalModel.Store.GetContactList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SMSPortalModel.GetContactList_Result">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="SMSCampains">
+            <EntityTypeMapping TypeName="SMSPortalModel.SMSCampain">
+              <MappingFragment StoreEntitySet="SMSCampain">
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="SMSCountBefore" ColumnName="SMSCountBefore" />
+                <ScalarProperty Name="Failure" ColumnName="Failure" />
+                <ScalarProperty Name="Success" ColumnName="Success" />
+                <ScalarProperty Name="CharacterCount" ColumnName="CharacterCount" />
+                <ScalarProperty Name="SMSText" ColumnName="SMSText" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMSSchedules">
+            <EntityTypeMapping TypeName="SMSPortalModel.SMSSchedule">
+              <MappingFragment StoreEntitySet="SMSSchedule">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TextSms" ColumnName="TextSms" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Idpk" ColumnName="Idpk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

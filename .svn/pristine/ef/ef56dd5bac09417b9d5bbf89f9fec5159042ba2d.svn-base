@@ -1,0 +1,260 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="SMSPortal.Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>WebiXoft SMS Portal</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.5 -->
+    <link href="Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />--%>
+    <link href="Content/CSS/font-awesome.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Theme style -->
+    <link href="Content/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <%--<link href="Content/DateTimePicker/jquery.datetimepicker.css" rel="stylesheet" />--%>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="Content/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <link href="Content/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+
+    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+        <div class="content-wrapper" style="min-height: 255px">
+            <form id="form1" runat="server">
+                <header class="main-header">
+                    <nav class="navbar navbar-static-top">
+                        <div class="container" style="margin-top: 65px;">
+                            <div class="navbar-header">
+                                <a href="http://sms.webixoft.net" class="navbar-brand" style="margin-top: -80px;">
+                                    <img src="../Images/WXLogo.png" alt="WebiXoft Solutions" height="100px" />
+                                </a>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="margin-left: 250px;">
+                                <ul class="nav navbar-nav">
+                                    <li id="liHome" runat="server" class="nav-item" visible="false">
+                                        <a id="dashboard" runat="server" href="../Authentication/Dashboard.aspx">Home</a>
+                                    </li>
+                                    <li id="liClients" runat="server" class="nav-item" visible="false">
+                                        <a href="../Clients/ClientRegistration.aspx">Clients</a>
+                                    </li>
+                                    <li id="liPackage" runat="server" visible="false">
+                                        <a href="../Pakckages/AddPackage.aspx">Package</a></li>
+                                    <li id="liAsign" runat="server" visible="false"><a href="../Pakckages/PackageAssigning.aspx">Package Assign</a>
+                                    </li>
+                                    <li id="liSmsCampaign" runat="server" visible="false">
+                                        <a href="../SMS/SMSCampaign.aspx">SMS Campaigning</a>
+                                    </li>
+                                    <li id="liScheduleSmS" runat="server" class="nav-item dropdown" visible="false">
+                                        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">ScheduleSMS<span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                              <li id="liAddSchedule" runat="server" visible="true"><a href="../ScheduleSMS/ScheduleSMS.aspx">Add Schedule</a></li>
+                                              <li id="liScheduleList" runat="server" visible="true"><a href="../ScheduleSMS/ScheduleList.aspx">Schedule List</a></li>
+
+                                        </ul>
+                                        
+                                    </li>
+                                    <li id="liUser" runat="server" visible="false">
+                                        <a href="../Users/UserRegistration.aspx">User</a>
+                                    </li>
+                                    <li id="liGroup" runat="server" class="nav-item dropdown" visible="true">
+                                        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">Group Mgmt.<span class="caret"></span>
+                                        </a>                                                                             
+                                        <ul class="dropdown-menu">
+                                            <li id="liAddGroup" runat="server" visible="false"><a href="../Groups/AddGroups.aspx">Add Groups</a></li>
+                                            <li id="liAddContact" runat="server" visible="false"><a href="../ContactForm/AddContact.aspx">Add Contact</a></li>
+                                            <li id="liContactList" runat="server" visible="false"><a href="../ContactForm/ContactList.aspx">Contact List</a></li>
+                                        </ul>                                      
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="navbar-custom-menu">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown messages-menu">
+                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <span id="lblremsms" runat="server" class="label label-success"></span>
+                                        </a>
+                                        <%--<ul class="dropdown-menu">
+                                    <li class="header">You have 4 messages</li>
+                                    <li>
+                                        <!-- inner menu: contains the messages -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- start message -->
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <!-- User Image -->
+                                                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <!-- Message title and timestamp -->
+                                                    <h4>Support Team
+                                <small><i class="fa fa-clock-o"></i>5 mins</small>
+                                                    </h4>
+                                                    <!-- The message -->
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                            <!-- end message -->
+                                        </ul>
+                                        <!-- /.menu -->
+                                    </li>
+                                    <li class="footer"><a href="#">See All Messages</a></li>
+                                </ul>--%>
+                                    </li>
+                                    <!-- Notifications Menu -->
+                                    <li class="dropdown notifications-menu">
+                                        <!-- Menu toggle button -->
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-bell-o"></i>
+                                            <span class="label label-warning">0</span>
+                                        </a>
+                                        <%--<ul class="dropdown-menu">
+                                    <li class="header">You have 10 notifications</li>
+                                    <li>
+                                        <!-- Inner Menu: contains the notifications -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- start notification -->
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i>5 new members joined today
+                                                </a>
+                                            </li>
+                                            <!-- end notification -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">View all</a></li>
+                                </ul>--%>
+                                    </li>
+                                    <!-- Tasks Menu -->
+                                    <li class="dropdown tasks-menu">
+                                        <!-- Menu Toggle Button -->
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-flag-o"></i>
+                                            <span class="label label-danger">0</span>
+                                        </a>
+                                        <%--<ul class="dropdown-menu">
+                                    <li class="header">You have 9 tasks</li>
+                                    <li>
+                                        <!-- Inner menu: contains the tasks -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- Task item -->
+                                                <a href="#">
+                                                    <!-- Task title and progress text -->
+                                                    <h3>Design some buttons
+                                <small class="pull-right">20%</small>
+                                                    </h3>
+                                                    <!-- The progress bar -->
+                                                    <div class="progress xs">
+                                                        <!-- Change the css width attribute to simulate progress -->
+                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">20% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <!-- end task item -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">View all tasks</a>
+                                    </li>
+                                </ul>--%>
+                                    </li>
+                                    <!-- User Account Menu -->
+                                    <li class="dropdown user user-menu">
+                                        <!-- Menu Toggle Button -->
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <!-- The user image in the navbar-->
+                                            <img src="../Images/client.png" class="user-image" alt="User Image">
+                                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                            <span id="lblusername" runat="server" class="hidden-xs"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <!-- The user image in the menu -->
+                                            <li class="user-header">
+                                                <img src="../Images/client.png" class="img-circle" alt="User Image">
+                                                <p>
+                                                    <span id="lblusernameinner" runat="server"></span>
+                                                    <small><span id="lbljoiningdate" runat="server"></span></small>
+                                                </p>
+                                            </li>
+                                            <%--<!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
+                                    </li>--%>
+                                            <!-- Menu Footer-->
+                                            <li class="user-footer">
+                                                <%--<div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        </div>--%>
+                                                <div class="pull-right">
+                                                    <asp:LinkButton ID="btnSignOut" runat="server" CssClass="btn btn-default btn-flat" OnClick="btnSignOut_Click">Sign out</asp:LinkButton>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </form>
+        </div>
+        <footer class="main-footer">
+            <div class="container">
+                <center>
+            <strong>Copyright &copy; 2018 <a href="http://webixoft.net">WebiXoft Solutions</a>.</strong> All rights reserved.
+            </center>
+            </div>
+        </footer>
+    </div>
+    <%--<script src="Content/plugins/datatables/dataTables.bootstrap.js"></script>--%>
+    <!-- jQuery 2.1.4 -->
+  <%-- <script src="/Content/plugins/jQuery/jQuery-2.1.4.min.js"></script>--%>
+
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+      <!-- Bootstrap 3.3.5 -->
+    <script src="../Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../Scripts/moment.js"></script>
+    <script src="../Scripts/moment-with-locales.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.js"></script>
+
+  
+    <!-- SlimScroll -->
+    <script src="../Content/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../Content/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../Content/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../Content/dist/js/demo.js"></script>
+</body>
+</html>

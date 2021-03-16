@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSPortal", "SMSPortal\SMSPortal.csproj", "{D8761E91-1D73-4BD8-853A-9FD3B2746C20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WXSecurity", "WXSecurity\WXSecurity.csproj", "{71B0348D-D0BA-4089-B5FE-345B0FD649A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WXLogging", "WXLogging\WXLogging.csproj", "{A201212C-A689-49E0-9F38-106E2125C417}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8761E91-1D73-4BD8-853A-9FD3B2746C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8761E91-1D73-4BD8-853A-9FD3B2746C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8761E91-1D73-4BD8-853A-9FD3B2746C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8761E91-1D73-4BD8-853A-9FD3B2746C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B0348D-D0BA-4089-B5FE-345B0FD649A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B0348D-D0BA-4089-B5FE-345B0FD649A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B0348D-D0BA-4089-B5FE-345B0FD649A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B0348D-D0BA-4089-B5FE-345B0FD649A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A201212C-A689-49E0-9F38-106E2125C417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A201212C-A689-49E0-9F38-106E2125C417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A201212C-A689-49E0-9F38-106E2125C417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A201212C-A689-49E0-9F38-106E2125C417}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
